@@ -1,0 +1,14 @@
+.responsive-post-preview {
+	font-family: 'Genericons';
+	background: red;
+	display: block;
+}
+
+.responsive-post-preview .small {
+	text-transform: uppercase;
+	content: '\f437';
+}
+
+.responsive-post-preview .medium {
+	content: '\f453';
+}
