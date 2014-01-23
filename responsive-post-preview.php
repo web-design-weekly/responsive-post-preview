@@ -9,20 +9,35 @@
 class Responsive_Post_Preview {
 
 	public function __construct() {
+
+		// Register styles
+		add_action( 'admin_enqueue_scripts', array( $this, 'styles' ) );
+
+		// Fire up the javascript
 		add_action( 'admin_footer', array( $this, 'javascript' ) );
+
+
+
 	}
+
+
+	public function styles() {
+
+		/* would be good to remove this out so it is not repeated in both functions */
+		global $pagenow;
+
+		if( 'post.php' != $pagenow ) {
+			return;
+		}
+
+		wp_enqueue_style( 'my_custom_script', plugin_dir_url( __FILE__ ) . 'css/styles.css' );
+	}
+
 
 	public function javascript() {
 
+		/* would be good to remove this out so it is not repeated in both functions */
 		global $pagenow;
-
-		// If on post screen insert html into side widget
-		// when that link is clicked open up a new tab with the post.
-
-		// when that is working, work out how to open a new tab that has the body set at a specific size
-
-		//http://stackoverflow.com/questions/9399354/how-to-open-a-new-window-and-insert-html-into-it-using-jquery
-
 
 		if( 'post.php' != $pagenow ) {
 			return;
@@ -32,27 +47,38 @@ class Responsive_Post_Preview {
 		<script>
 		(function($){
 
-			var previewLinkHtml = "<div id='responsive-post-preview'><a href=\"#\" target=\"wp-preview\">Responsive Post Preview — Tablet</a></div>",
+			var smallLink,
+				mediumLink,
 				currentPreviewURL = $('#post-preview').attr('href');
 
 
-			$('#minor-publishing-actions').append( previewLinkHtml );
-			$('#responsive-post-preview a').attr('href', currentPreviewURL );
+			smallLink = "<div class='responsive-post-preview'><a href=\"#\" target=\"wp-preview\" class=\"small\">Mobile</a></div>";
+
+			mediumLink = "<div class='responsive-post-preview'><a href=\"#\" target=\"wp-preview\" class=\"medium\">Tablet</a></div>";
 
 
-			$('#responsive-post-preview a').click(function(event) {
+
+			$('#minor-publishing-actions').append( smallLink );
+			$('#minor-publishing-actions').append( mediumLink );
+			$('.responsive-post-preview a').attr('href', currentPreviewURL );
+
+
+			$('.responsive-post-preview a').click(function(event) {
 				event.preventDefault();
-				var url = $(this).attr('href');
 
-				//OpenInNewTab(url);
-				OpenInNewTab(url);
+				var url = $(this).attr('href'),
+					size = $(this).attr('class');
+
+				OpenInNewTab(url, size);
 
 
 			});
 
 
-			function OpenInNewTab(url) {
-				var w = window.open();
+			function OpenInNewTab(url, size) {
+
+				var w = window.open(),
+					modifiedPage;
 
 					$.ajax({
 					url: url,
@@ -62,15 +88,16 @@ class Responsive_Post_Preview {
 					success: function(html) {
 
 						// Lets go grab the content and and do some magic
-						//var modifiedPage =  html + '<script src ="#">';
 
-						var modifiedPage = '<style type="text/css">body {height: 1024px; width: 768px; margin: 0 auto !important; overflow: scroll;}</style>' + html;
+						if (size === 'small' ) {
+							modifiedPage = '<style type="text/css">body {height: 480px; width: 320px; margin: 0 auto !important; overflow: scroll;}</style>' + html;
+						}
 
-						//console.log(modifiedPage);
+						if (size === 'medium' ) {
+							modifiedPage = '<style type="text/css">body {height: 1024px; width: 768px; margin: 0 auto !important; overflow: scroll;}</style>' + html;
+						}
 
 						$(w.document.body).html(modifiedPage);
-						win.focus();
-
 
 					},
 					error: function() {
