@@ -52,7 +52,7 @@ class Responsive_Post_Preview {
 				currentPreviewURL = $('#post-preview').attr('href');
 
 
-			smallLink = "<div class='responsive-post-preview'><a href=\"#\" target=\"wp-preview\" class=\"small\">Mobile</a></div>";
+			smallLink = "<div class='responsive-post-preview'><a href=\"#\" target=\"wp-preview\" class=\"small\">Phone</span></a></div>";
 
 			mediumLink = "<div class='responsive-post-preview'><a href=\"#\" target=\"wp-preview\" class=\"medium\">Tablet</a></div>";
 
