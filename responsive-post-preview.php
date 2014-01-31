@@ -16,8 +16,6 @@ class Responsive_Post_Preview {
 		// Fire up the javascript
 		add_action( 'admin_footer', array( $this, 'javascript' ) );
 
-
-
 	}
 
 
@@ -47,19 +45,23 @@ class Responsive_Post_Preview {
 		<script>
 		(function($){
 
-			var smallLink,
+			var container,
+				smallLink,
 				mediumLink,
 				currentPreviewURL = $('#post-preview').attr('href');
 
 
-			smallLink = "<div class='responsive-post-preview'><a href=\"#\" target=\"wp-preview\" class=\"small\">Phone</span></a></div>";
+			container = "<div class=\"responsive-post-preview\"></div>";
 
-			mediumLink = "<div class='responsive-post-preview'><a href=\"#\" target=\"wp-preview\" class=\"medium\">Tablet</a></div>";
+			smallLink = "<a id=\"icon-mobile\" href=\"#\" target=\"wp-preview\" class=\"small\">Phone</a>";
+
+			mediumLink = "<a id=\"icon-mobile2\" href=\"#\" target=\"wp-preview\" class=\"medium\">Tablet</a>";
 
 
+			$('#minor-publishing-actions').append( container );
+			$('.responsive-post-preview').append( smallLink );
+			$('.responsive-post-preview').append( mediumLink );
 
-			$('#minor-publishing-actions').append( smallLink );
-			$('#minor-publishing-actions').append( mediumLink );
 			$('.responsive-post-preview a').attr('href', currentPreviewURL );
 
 
@@ -69,7 +71,11 @@ class Responsive_Post_Preview {
 				var url = $(this).attr('href'),
 					size = $(this).attr('class');
 
+
+
 				OpenInNewTab(url, size);
+				console.log(url);
+				console.log(size);
 
 
 			});
