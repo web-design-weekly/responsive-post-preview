@@ -71,8 +71,6 @@ class Responsive_Post_Preview {
 				var url = $(this).attr('href'),
 					size = $(this).attr('class');
 
-
-
 				OpenInNewTab(url, size);
 				console.log(url);
 				console.log(size);
@@ -86,30 +84,17 @@ class Responsive_Post_Preview {
 				var w = window.open(),
 					modifiedPage;
 
-					$.ajax({
-					url: url,
-					dataType: 'html',
-					beforeSend: function () {
-					},
-					success: function(html) {
+					// Lets determine the size and and do some magic
 
-						// Lets go grab the content and and do some magic
-
-						if (size === 'small' ) {
-							modifiedPage = '<style type="text/css">body {height: 480px; width: 320px; margin: 0 auto !important; overflow: scroll;}</style>' + html;
-						}
-
-						if (size === 'medium' ) {
-							modifiedPage = '<style type="text/css">body {height: 1024px; width: 768px; margin: 0 auto !important; overflow: scroll;}</style>' + html;
-						}
-
-						$(w.document.body).html(modifiedPage);
-
-					},
-					error: function() {
-						console.log("Oh the internet broke....");
+					if (size === 'small' ) {
+						 modifiedPage = '<iframe src="' + url + '" width="320px" height="100%"></iframe>';
 					}
-				});
+
+					if (size === 'medium' ) {
+						modifiedPage = '<iframe src="' + url + '" width="768px" height="1024px"></iframe>';
+					}
+
+				$(w.document.body).html(modifiedPage);
 
 			}
 
