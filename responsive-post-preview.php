@@ -1,9 +1,11 @@
 <?php
 /*
  * Plugin Name: Responsive Post Preview
- * Description: Adds the ability to view your posts at different viewport sizes
+ * Description: Adds the ability to preview your posts at different viewport sizes
  * Author: Jake Bresnehan
- * Version: 1.0
+ * Author URI:  http://web-design-weekly.com
+ * Plugin URI:  http://web-design-weekly.com
+ * Version: 1.0.1
  */
 
 class Responsive_Post_Preview {
@@ -15,6 +17,10 @@ class Responsive_Post_Preview {
 
 		// Fire up the javascript
 		add_action( 'admin_footer', array( $this, 'javascript' ) );
+
+		// Adds settings link to plugins page
+		$plugin_file = 'responsive-post-preview/responsive-post-preview.php';
+		add_filter( 'plugin_action_links_' . $plugin_file, array( $this, 'my_plugin_action_links' ) );
 
 	}
 
@@ -104,6 +110,19 @@ class Responsive_Post_Preview {
 
 <?php
 	}
+
+	/**
+	 * Add settings link on plugins.php
+	 *
+	 * @since    1.0.1
+	 */
+
+	public function my_plugin_action_links( $links ) {
+		$links[] = '<a href="http://web-design-weekly.com/support/forums/forum/responsive-post-preview-plugin/" target="_blank">Support</a>';
+
+		return $links;
+	}
+
 
 }
 new Responsive_Post_Preview;
