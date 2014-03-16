@@ -2,11 +2,11 @@
 Plugin URI: http://web-design-weekly.com
 Author URI: http://web-design-weekly.com
 Contributors: jakebresnehan
-Donate link: http://web-design-weekly.com/support-wdw/
+Donate link: http://web-design-weekly.com/
 Tags: Post, Edit
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable Tag: 1.0.1
+Stable Tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,7 +25,7 @@ Features of the plugin include:
 
 [youtube http://www.youtube.com/watch?v=bXe5_BvvtxA]
 
-[Plugin Support & Feature requests](http://web-design-weekly.com/support/forums/forum/responsive-post-preview-plugin/).
+[Plugin Support & Feature requests](http://web-design-weekly.com/support/).
 
 == Installation ==
 
@@ -47,6 +47,10 @@ Once activated two icons will be visible under the "Preview" post button. These 
 
 == Changelog ==
 
+= 1.0.2 =
+
+* Fixed support link
+
 = 1.0.1 =
 
 * Added better documentation
@@ -57,6 +61,10 @@ Once activated two icons will be visible under the "Preview" post button. These 
 * First release!
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+
+* Fixed support link
 
 = 1.0.1 =
 

@@ -5,7 +5,7 @@
  * Author: Jake Bresnehan
  * Author URI:  http://web-design-weekly.com
  * Plugin URI:  http://web-design-weekly.com
- * Version: 1.0.1
+ * Version: 1.0.2
  */
 
 class Responsive_Post_Preview {
@@ -114,11 +114,11 @@ class Responsive_Post_Preview {
 	/**
 	 * Add settings link on plugins.php
 	 *
-	 * @since    1.0.1
+	 * @since    1.0.2
 	 */
 
 	public function my_plugin_action_links( $links ) {
-		$links[] = '<a href="http://web-design-weekly.com/support/forums/forum/responsive-post-preview-plugin/" target="_blank">Support</a>';
+		$links[] = '<a href="http://web-design-weekly.com/support/" target="_blank">Support</a>';
 
 		return $links;
 	}
