@@ -5,7 +5,7 @@
  * Author: Jake Bresnehan
  * Author URI:  http://web-design-weekly.com
  * Plugin URI:  http://web-design-weekly.com
- * Version: 1.0.2
+ * Version: 1.0.3
  */
 
 class Responsive_Post_Preview {
