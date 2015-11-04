@@ -5,7 +5,7 @@ Contributors: jakebresnehan
 Donate link: http://web-design-weekly.com/
 Tags: Post, Edit
 Requires at least: 3.8
-Tested up to: 3.9.1
+Tested up to: 4.3.1
 Stable Tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
